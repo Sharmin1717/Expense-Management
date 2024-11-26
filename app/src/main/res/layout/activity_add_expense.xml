@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/income_expense_add"
+    android:padding="16dp">
+
+    <!-- Expense Amount EditText -->
+    <EditText
+        android:id="@+id/etExpenseAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Expense Amount"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:padding="12dp" />
+
+    <!-- Expense Note EditText -->
+    <EditText
+        android:id="@+id/etExpenseNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Note"
+        android:minHeight="48dp"
+        android:padding="12dp" />
+
+    <!-- Save Expense Button -->
+    <Button
+        android:id="@+id/btnSaveExpense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Expense"
+        android:layout_marginTop="16dp" />
+</LinearLayout>

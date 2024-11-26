@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background_clr">#74C5BD</color>
+    <color name="edit_text_background">#042C32</color>
+
+    <color name="cardview_dark_background">#252327</color>
+
+    <color name="income_clr">#31AE10</color>
+    <color name="income_expense_add">#B7D4EC</color>
+    <color name="expense_clr">#784C09</color>
+
+
+</resources>

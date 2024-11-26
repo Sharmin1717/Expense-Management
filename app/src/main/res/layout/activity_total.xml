@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvTotalIncome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Income: "
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvTotalExpense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Expense: "
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvNetBalance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Net Balance: "
+        android:textSize="18sp" />
+</LinearLayout>
