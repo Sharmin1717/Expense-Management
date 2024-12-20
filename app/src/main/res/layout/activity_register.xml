@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,52 +11,74 @@
     tools:context=".RegisterActivity">
 
     <!-- Full Name EditText -->
-    <EditText
-        android:id="@+id/et_FullName"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Full Name"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:padding="12dp"
-        android:background="@drawable/edit_text_background"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_FullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:background="@drawable/edit_text_background" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Email EditText -->
-    <EditText
-        android:id="@+id/etEmail"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:padding="12dp"
-        android:background="@drawable/edit_text_background"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp">
 
-    <!-- Password EditText -->
-    <EditText
-        android:id="@+id/etPassword"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:background="@drawable/edit_text_background" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Password EditText with Toggle Visibility -->
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:padding="12dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/edit_text_background"/>
+        app:passwordToggleEnabled="true">
 
-    <!-- Confirm Password EditText -->
-    <EditText
-        android:id="@+id/et_ConfirmPassword"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:background="@drawable/edit_text_background" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Confirm Password EditText with Toggle Visibility -->
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Confirm Password"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:padding="12dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/edit_text_background"/>
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_ConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:background="@drawable/edit_text_background" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Register Button -->
     <Button
@@ -66,7 +89,7 @@
         android:padding="12dp"
         android:textColor="@android:color/white"
         android:backgroundTint="@color/cardview_dark_background"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp" />
 
     <!-- Login TextView -->
     <TextView
@@ -76,5 +99,5 @@
         android:text="Already have an account? Login"
         android:textColor="@color/cardview_dark_background"
         android:padding="8dp"
-        android:gravity="center"/>
+        android:gravity="center" />
 </LinearLayout>

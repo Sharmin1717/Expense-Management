@@ -3,35 +3,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="32dp"
     android:gravity="center"
     android:background="@color/background_clr"
     tools:context=".LoginActivity">
 
-    <!-- Email EditText -->
-    <EditText
-        android:id="@+id/etEmail"
+    <!-- Email TextInputLayout -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etEmailLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:padding="12dp"
-        android:background="@drawable/edit_text_background"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp">
 
-    <!-- Password EditText -->
-    <EditText
-        android:id="@+id/etPassword"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:background="@drawable/edit_text_background" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Password TextInputLayout -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etPasswordLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:padding="12dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/edit_text_background"/>
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:background="@drawable/edit_text_background" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <!-- Login Button -->
     <Button
@@ -42,7 +63,7 @@
         android:padding="12dp"
         android:textColor="@android:color/white"
         android:backgroundTint="@color/cardview_dark_background"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp" />
 
     <!-- Register TextView -->
     <TextView
@@ -52,5 +73,5 @@
         android:text="Don't have an account? Register"
         android:textColor="@color/cardview_dark_background"
         android:padding="8dp"
-        android:gravity="center"/>
+        android:gravity="center" />
 </LinearLayout>
