@@ -1,8 +1,8 @@
 package com.example.managingexpense;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -42,6 +42,9 @@ public class LoginActivity extends AppCompatActivity {
 
         btnLogin.setOnClickListener(view -> loginUser());
         tvRegister.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
+
+        // Check if the user is already logged in (skip login screen if true)
+        checkIfLoggedIn();
     }
 
     private void loginUser() {
@@ -64,6 +67,13 @@ public class LoginActivity extends AppCompatActivity {
                     progressBar.setVisibility(View.GONE);
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
+
+                        // Save login state in SharedPreferences
+                        getSharedPreferences("UserPrefs", MODE_PRIVATE)
+                                .edit()
+                                .putBoolean("isLoggedIn", true)
+                                .apply();
+
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
                     } else {
@@ -72,8 +82,20 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
+    private void checkIfLoggedIn() {
+        // Check if user is already logged in by checking SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        boolean isLoggedIn = ((SharedPreferences) sharedPreferences).getBoolean("isLoggedIn", false);
+
+        if (isLoggedIn) {
+            // If the user is logged in, skip the login screen and go directly to MainActivity
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
+    }
+
     private boolean isValidEmail(String email) {
-        return !email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        return !email.isEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     private boolean isValidPassword(String password) {

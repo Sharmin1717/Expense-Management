@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_width="match_parent"
+    android:background="@color/total_clr"
     android:layout_height="match_parent">
 
     <TextView
@@ -10,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Total Income: "
+        android:textColor="@color/total_in_clr"
         android:textSize="18sp" />
 
     <TextView
@@ -17,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Total Expense: "
+        android:textColor="@color/total_ex_clr"
         android:textSize="18sp" />
 
     <TextView
@@ -24,5 +27,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Net Balance: "
+        android:textColor="@color/total_net_clr"
         android:textSize="18sp" />
 </LinearLayout>
