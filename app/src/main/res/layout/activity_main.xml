@@ -10,27 +10,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:orientation="vertical">
 
-        <!-- App Logo -->
+        <!-- Centered App Logo -->
         <ImageView
             android:id="@+id/app_Logo"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:src="@drawable/splash2_logo"
             android:contentDescription="App Logo"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center_horizontal"/> <!-- Keeps logo in the center -->
 
-        <!-- Add Income Button -->
-
-        <!-- Add Expense Button -->
+        <!-- Buttons (Left-aligned) -->
         <LinearLayout
             android:id="@+id/btnAddIncome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp">
 
@@ -53,17 +50,16 @@
             android:id="@+id/btnAddExpense"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal"
-            android:gravity="center"
-            android:padding="10dp"
-            android:layout_marginTop="8dp">
+            android:padding="10dp">
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/expense_add"
-                android:contentDescription="Add Expense"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/expense_add_final"
+                android:contentDescription="Add Expense" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -73,22 +69,20 @@
                 android:textColor="@android:color/black"/>
         </LinearLayout>
 
-        <!-- View Income Button -->
         <LinearLayout
             android:id="@+id/btnViewIncome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal"
-            android:gravity="center"
-            android:padding="10dp"
-            android:layout_marginTop="8dp">
+            android:padding="10dp">
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginEnd="8dp"
                 android:src="@drawable/view_income"
-                android:contentDescription="View Income"
-                android:layout_marginEnd="8dp"/>
+                android:contentDescription="View Income" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -98,22 +92,20 @@
                 android:textColor="@android:color/black"/>
         </LinearLayout>
 
-        <!-- View Expense Button -->
         <LinearLayout
             android:id="@+id/btnViewExpense"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal"
-            android:gravity="center"
-            android:padding="10dp"
-            android:layout_marginTop="8dp">
+            android:padding="10dp">
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginEnd="8dp"
                 android:src="@drawable/view_expense"
-                android:contentDescription="View Expense"
-                android:layout_marginEnd="8dp"/>
+                android:contentDescription="View Expense" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -123,22 +115,20 @@
                 android:textColor="@android:color/black"/>
         </LinearLayout>
 
-        <!-- View Total Button -->
         <LinearLayout
             android:id="@+id/btnTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal"
-            android:gravity="center"
-            android:padding="10dp"
-            android:layout_marginTop="8dp">
+            android:padding="10dp">
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginEnd="8dp"
                 android:src="@drawable/total_in_ex"
-                android:contentDescription="View Total"
-                android:layout_marginEnd="8dp"/>
+                android:contentDescription="View Total" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -148,22 +138,20 @@
                 android:textColor="@android:color/black"/>
         </LinearLayout>
 
-        <!-- Logout Button -->
         <LinearLayout
             android:id="@+id/btnLogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
-            android:gravity="center"
-            android:padding="10dp"
-            android:layout_marginTop="16dp">
+            android:padding="10dp">
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginEnd="8dp"
                 android:src="@drawable/log_out"
-                android:contentDescription="Logout"
-                android:layout_marginEnd="8dp"/>
+                android:contentDescription="Logout" />
 
             <TextView
                 android:layout_width="wrap_content"
