@@ -41,7 +41,7 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Expense expense = expenseList.get(position);
-        holder.tvAmount.setText("Amount: BDT " + expense.getAmount());
+        holder.tvAmount.setText("Amount: $ " + expense.getAmount());
         holder.tvNote.setText("Note: " + expense.getNote());
         holder.tvDate.setText("Date: " + expense.getDate());  // Add this line to display the date
 

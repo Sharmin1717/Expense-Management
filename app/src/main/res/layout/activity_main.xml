@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Centered App Logo -->
         <ImageView
             android:id="@+id/app_Logo"
             android:layout_width="120dp"
@@ -20,9 +19,8 @@
             android:src="@drawable/splash2_logo"
             android:contentDescription="App Logo"
             android:layout_marginBottom="16dp"
-            android:layout_gravity="center_horizontal"/> <!-- Keeps logo in the center -->
+            android:layout_gravity="center_horizontal"/>
 
-        <!-- Buttons (Left-aligned) -->
         <LinearLayout
             android:id="@+id/btnAddIncome"
             android:layout_width="wrap_content"
@@ -147,8 +145,8 @@
             android:padding="10dp">
 
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginEnd="8dp"
                 android:src="@drawable/log_out"
                 android:contentDescription="Logout" />
@@ -157,8 +155,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Logout"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
         </LinearLayout>
 
     </LinearLayout>

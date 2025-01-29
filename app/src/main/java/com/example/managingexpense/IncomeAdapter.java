@@ -40,7 +40,7 @@ public class IncomeAdapter extends RecyclerView.Adapter<IncomeAdapter.IncomeView
     @Override
     public void onBindViewHolder(@NonNull IncomeViewHolder holder, int position) {
         Income income = incomeList.get(position);
-        holder.tvAmount.setText("Amount: BDT " + income.getAmount());
+        holder.tvAmount.setText("Amount: $ " + income.getAmount());
         holder.tvNote.setText("Note: " + income.getNote());
         holder.tvDate.setText("Date: " + income.getDate());
 
