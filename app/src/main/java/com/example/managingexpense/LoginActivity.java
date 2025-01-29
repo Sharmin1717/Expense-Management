@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(view -> loginUser());
         tvRegister.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
 
-        // Check if the user is already logged in (skip login screen if true)
+        // Check if user is already logged in
         checkIfLoggedIn();
     }
 
@@ -51,54 +51,55 @@ public class LoginActivity extends AppCompatActivity {
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
 
-        if (!isValidEmail(email)) {
+        // Reset errors before new validation
+        etEmailLayout.setError(null);
+        etPasswordLayout.setError(null);
+
+        // Email validation
+        if (email.isEmpty()) {
+            etEmailLayout.setError("Email is required");
+            return;
+        }
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             etEmailLayout.setError("Enter a valid email address");
             return;
         }
-        if (!isValidPassword(password)) {
-            etPasswordLayout.setError("Password must include at least one uppercase, lowercase, digit, and special character");
+
+        // Password validation
+        if (password.isEmpty()) {
+            etPasswordLayout.setError("Password is required");
+            return;
+        }
+        if (password.length() < 8) {
+            etPasswordLayout.setError("Password must be at least 8 characters");
             return;
         }
 
         progressBar.setVisibility(View.VISIBLE);
 
+        // Firebase login
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     progressBar.setVisibility(View.GONE);
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
-
-                        // Save login state in SharedPreferences
-                        getSharedPreferences("UserPrefs", MODE_PRIVATE)
-                                .edit()
-                                .putBoolean("isLoggedIn", true)
-                                .apply();
-
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        finish();
+                        if (user != null) {
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            finish();
+                        }
                     } else {
-                        Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Authentication failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
     private void checkIfLoggedIn() {
-        // Check if user is already logged in by checking SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-        boolean isLoggedIn = ((SharedPreferences) sharedPreferences).getBoolean("isLoggedIn", false);
+        boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
 
-        if (isLoggedIn) {
-            // If the user is logged in, skip the login screen and go directly to MainActivity
+        if (isLoggedIn && mAuth.getCurrentUser() != null) {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
         }
-    }
-
-    private boolean isValidEmail(String email) {
-        return !email.isEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
-    private boolean isValidPassword(String password) {
-        return password.length() >= 6; // Minimum password length
     }
 }

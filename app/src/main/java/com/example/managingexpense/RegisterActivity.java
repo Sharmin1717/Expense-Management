@@ -21,7 +21,7 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     // Regex patterns for validation
-    private static final Pattern NAME_PATTERN = Pattern.compile("^[a-zA-Z ]+$");
+    private static final Pattern NAME_PATTERN = Pattern.compile("^[\\p{L} .'-]+$");
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
 
@@ -30,7 +30,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        // Initialize UI components
         etFullName = findViewById(R.id.et_FullName);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
@@ -40,13 +39,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        // Handle register button click
         btnRegister.setOnClickListener(view -> registerUser());
-
-        // Handle login text click
         tvLogin.setOnClickListener(view -> {
-            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             finish();
         });
     }
@@ -57,27 +52,37 @@ public class RegisterActivity extends AppCompatActivity {
         String password = etPassword.getText().toString().trim();
         String confirmPassword = etConfirmPassword.getText().toString().trim();
 
-        // Validate inputs
+        // Reset errors before new validation
+        etFullName.setError(null);
+        etEmail.setError(null);
+        etPassword.setError(null);
+        etConfirmPassword.setError(null);
+
+        // Full name validation
         if (fullName.isEmpty()) {
             etFullName.setError("Full name is required");
             etFullName.requestFocus();
             return;
         }
         if (!NAME_PATTERN.matcher(fullName).matches()) {
-            etFullName.setError("Full name can only contain alphabets and spaces");
+            etFullName.setError("Enter a valid name");
             etFullName.requestFocus();
             return;
         }
+
+        // Email validation
         if (email.isEmpty()) {
             etEmail.setError("Email is required");
             etEmail.requestFocus();
             return;
         }
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            etEmail.setError("Enter a valid email address");
+            etEmail.setError("Enter a valid email");
             etEmail.requestFocus();
             return;
         }
+
+        // Password validation
         if (password.isEmpty()) {
             etPassword.setError("Password is required");
             etPassword.requestFocus();
@@ -88,7 +93,14 @@ public class RegisterActivity extends AppCompatActivity {
             etPassword.requestFocus();
             return;
         }
-        if (!password.equals(confirmPassword)) {
+
+        // Confirm password validation
+        if (confirmPassword.isEmpty()) {
+            etConfirmPassword.setError("Confirm password is required");
+            etConfirmPassword.requestFocus();
+            return;
+        }
+        if (!confirmPassword.equals(password)) {
             etConfirmPassword.setError("Passwords do not match");
             etConfirmPassword.requestFocus();
             return;
@@ -98,7 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Registration successful!", Toast.LENGTH_LONG).show();
                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                         finish();
                     } else {
